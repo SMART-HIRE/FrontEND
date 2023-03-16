@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "590110428000",
+    "project_id": "smarthire-285b9",
+    "storage_bucket": "smarthire-285b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590110428000:android:8fad0a3315250667c3ac05",
+        "android_client_info": {
+          "package_name": "com.example.shire"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590110428000-j8l6b373kmrj1b53qgcqi592civfi095.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC3cxiY_8XdYL5F0w8VUyeBkq1Jd2OOSm8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590110428000-j8l6b373kmrj1b53qgcqi592civfi095.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
