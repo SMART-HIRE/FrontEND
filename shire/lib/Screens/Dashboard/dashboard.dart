@@ -9,8 +9,7 @@ import 'package:flutter/rendering.dart';
 import 'package:shire/Screens/Auth/screens/welcome_screen.dart';
 import 'package:shire/Screens/FilePicker/filepicker.dart';
 import 'package:shire/Screens/FilePicker/fp.dart';
-
-
+import 'package:shire/back.dart';
 
 class DashBoard extends StatefulWidget {
   const DashBoard({Key? key}) : super(key: key);
@@ -132,11 +131,11 @@ class _DashBoardState extends State<DashBoard> {
                       //   child: ListTile(
                       //     leading: Icon(
                       //       Icons.logout,
-                          
+
                       //     ),
-                          
+
                       //     title: Text("Log Out"),
-                          
+
                       //   ),
                       // ),
                     ],
@@ -228,13 +227,13 @@ class _DashBoardState extends State<DashBoard> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return FP();
-                  },
-                ),
-              );
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return FP();
+              },
+            ),
+          );
         },
         child: const Icon(
           Icons.upload_file,
@@ -254,7 +253,16 @@ class _DashBoardState extends State<DashBoard> {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return FirebaseFileDownloader();
+                      },
+                    ),
+                  );
+                },
                 icon: const Icon(
                   CupertinoIcons.search,
                 ),
@@ -271,14 +279,10 @@ class _DashBoardState extends State<DashBoard> {
               IconButton(
                 onPressed: () async {
                   await FirebaseAuth.instance.signOut();
-                if (!mounted) return;
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return const WelcomeScreen();
-                }));
-
-
-
-
+                  if (!mounted) return;
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return const WelcomeScreen();
+                  }));
                 },
                 icon: const Icon(
                   CupertinoIcons.person_crop_circle_fill_badge_xmark,
@@ -357,28 +361,39 @@ class _GridBState extends State<GridB> {
     {
       "title": "USER 1",
       "description": "CSE",
-      "images": "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg" },
+      "images":
+          "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
+    },
     {
       "title": "USER 2",
       "description": "ECE",
-      "images": "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"    },
+      "images":
+          "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
+    },
     {
       "title": "USER 3",
       "description": "EEE",
-      "images": "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"    },
+      "images":
+          "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
+    },
     {
       "title": "USER 4",
       "description": "ECE",
-      "images": "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"    },
+      "images":
+          "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
+    },
     {
       "title": "USER 5",
       "description": "ECE",
-      "images": "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"    },
+      "images":
+          "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
+    },
     {
       "title": "USER 6",
       "description": "CSE",
-      "images": "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"    }
-    
+      "images":
+          "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
+    }
   ];
 
   @override
