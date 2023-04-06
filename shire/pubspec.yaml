@@ -31,21 +31,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  firebase_core: ^2.7.0
+  firebase_core: ^2.3.0
   flutter_svg: ^1.1.0
   file_picker: ^4.1.4
   image_picker: ^0.8.6+4
   faker: ^2.1.0
   flutter_document_picker: ^5.1.0
   firebase_auth: ^4.2.9
-
-
+  postgres: ^2.5.1
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   open_file: ^3.2.1
   google_fonts: ^4.0.3
   firebase_storage: ^11.0.14
+  firebase_database: ^10.1.0
   shared_preferences: ^2.0.18
   cloud_firestore: ^4.4.4
   fluttertoast: ^8.2.1

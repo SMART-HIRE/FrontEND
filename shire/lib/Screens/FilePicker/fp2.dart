@@ -7,10 +7,10 @@ import 'package:shire/Screens/FilePicker/widget/button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
 
-class FP extends StatelessWidget {
+class FP2 extends StatelessWidget {
   static final String title = 'Resume Upload';
 
-  const FP({Key? key});
+  const FP2({Key? key});
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -33,7 +33,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(FP.title),
+          title: Text(FP2.title),
           centerTitle: true,
         ),
         body: Container(
@@ -91,7 +91,7 @@ class _MainPageState extends State<MainPage> {
   Future uploadFiles() async {
     for (final file in fileList) {
       final fileName = basename(file!.path);
-      final destination = 'files/$fileName';
+      final destination = 'jr_engineer/$fileName';
 
       final task = FirebaseApi.uploadFile(destination, file);
 

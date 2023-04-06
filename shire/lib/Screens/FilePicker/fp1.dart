@@ -1,16 +1,21 @@
+// ignore_for_file: unused_import, unnecessary_import
+
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:shire/Screens/FilePicker/api/firebase_api.dart';
 import 'package:shire/Screens/FilePicker/widget/button_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:path/path.dart';
+import 'package:shire/Screens/Welcome/component/welcome_image.dart';
 
-class FP extends StatelessWidget {
+class FP1 extends StatelessWidget {
   static final String title = 'Resume Upload';
 
-  const FP({Key? key});
+  const FP1({Key? key});
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -33,7 +38,7 @@ class _MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text(FP.title),
+          title: Text(FP1.title),
           centerTitle: true,
         ),
         body: Container(
@@ -91,7 +96,7 @@ class _MainPageState extends State<MainPage> {
   Future uploadFiles() async {
     for (final file in fileList) {
       final fileName = basename(file!.path);
-      final destination = 'files/$fileName';
+      final destination = 'senior_engineer/$fileName';
 
       final task = FirebaseApi.uploadFile(destination, file);
 

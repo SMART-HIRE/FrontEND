@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_final_fields, sort_child_properties_last, prefer_const_constructors, unused_import, unused_field
+// ignore_for_file: prefer_final_fields, sort_child_properties_last, prefer_const_constructors, unused_import
 
 import 'dart:async';
 
@@ -13,15 +13,16 @@ import 'package:shire/Screens/FilePicker/fp1.dart';
 import 'package:shire/Screens/FilePicker/fp2.dart';
 import 'package:shire/animation.dart';
 import 'package:shire/back.dart';
+import 'package:shire/main.dart';
 
-class DashBoard extends StatefulWidget {
-  const DashBoard({Key? key}) : super(key: key);
+class CandDash extends StatefulWidget {
+  const CandDash({Key? key}) : super(key: key);
 
   @override
-  State<DashBoard> createState() => _DashBoardState();
+  State<CandDash> createState() => _DashBoardState();
 }
 
-class _DashBoardState extends State<DashBoard> {
+class _DashBoardState extends State<CandDash> {
   final String? userName = FirebaseAuth.instance.currentUser?.displayName;
 
   late final PageController pageController;
@@ -44,17 +45,8 @@ class _DashBoardState extends State<DashBoard> {
     });
   }
 
-String _userEmail = '';
-
   @override
   void initState() {
-    super.initState();
-  final user = FirebaseAuth.instance.currentUser;
-  if (user != null) {
-    _userEmail = user.email ?? '';
-  }
-
-
     pageController = PageController(initialPage: 0, viewportFraction: 0.85);
     carasouelTmer = getTimer();
     _scrollController.addListener(() {
@@ -101,7 +93,7 @@ String _userEmail = '';
                   ),
                   selectedTileColor: Colors.lightBlueAccent,
                   title: Text(
-                    "Hello $_userEmail",
+                    "Hello Candidate",
                     style: Theme.of(context).textTheme.subtitle1!.merge(
                           const TextStyle(
                             fontWeight: FontWeight.w700,
@@ -110,7 +102,7 @@ String _userEmail = '';
                         ),
                   ),
                   subtitle: Text(
-                    "Welcome back",
+                    "Welcome",
                     style: Theme.of(context).textTheme.subtitle2,
                   ),
                   trailing: PopUpMen(
@@ -236,21 +228,21 @@ String _userEmail = '';
       floatingActionButtonLocation: showBtmAppBr
           ? FloatingActionButtonLocation.centerDocked
           : FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return FP();
-              },
-            ),
-          );
-        },
-        child: const Icon(
-          Icons.upload_file,
-        ),
-      ),
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) {
+      //           return FP();
+      //         },
+      //       ),
+      //     );
+      //   },
+      //   child: const Icon(
+      //     Icons.upload_file,
+      //   ),
+      // ),
       bottomNavigationBar: AnimatedContainer(
         child: BottomAppBar(
           notchMargin: 8.0,
@@ -302,7 +294,7 @@ String _userEmail = '';
                   await FirebaseAuth.instance.signOut();
                   if (!mounted) return;
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return const WelcomeScreen();
+                    return  ButtonSelection();
                   }));
                 },
                 icon: const Icon(

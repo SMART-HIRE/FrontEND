@@ -3,9 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shire/Screens/Auth/auth.dart';
+import 'package:shire/Screens/Dashboard/canddash.dart';
+import 'package:shire/Screens/Dashboard/dashboard.dart';
 import 'package:shire/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
+import 'package:shire/Screens/Auth/widgets/customized_button.dart';
+
 
 
 Future<void> main() async {
@@ -60,7 +64,7 @@ class MyApp extends StatelessWidget {
               borderSide: BorderSide.none,
             ),
           )),
-            home: Auth(),  
+            home: ButtonSelection(),  
             
           );  
         }  
@@ -69,8 +73,86 @@ class MyApp extends StatelessWidget {
       },  
     );  
   }  
+}
+
+class ButtonSelection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Container(
+        height: MediaQuery.of(context).size.height,
+        width: double.infinity,
+        decoration: const BoxDecoration(
+            image: DecorationImage(image: AssetImage("assets/background.png"))),
+        
+        child: Column(
+          
+          
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+
+            const SizedBox(
+              
+              height: defaultPadding * 2
+            ),
+            Text('Smart Hire'),
+             LoadingAnimationWidget.halfTriangleDot( 
+              // LoadingAnimationwidget that call the
+        color: Colors.lightBlue,      
+                            // staggereddotwave animation
+        size: 50,
+
+    
+      ),
+      Spacer(),
+
+          Row(
+            
+          children: 
+          [
+
+            Spacer(),
+            Expanded(
+              flex: 8,
+              child: Image.asset(
+                "assets/images/LOGO 1.png",
+
+              ),
+              
+            ),
+            Spacer(),
+          ],
+        ),
 
 
+
+            const SizedBox(height: 40),
+            CustomizedButton(
+              buttonText: "CANDIDATE",
+              buttonColor: Colors.lightBlueAccent,
+              textColor: Colors.black,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const CandDash()));
+              },
+            ),
+            CustomizedButton(
+              buttonText: "HR",
+              buttonColor: Colors.black,
+              textColor: Colors.lightBlueAccent,
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const Auth()));
+              },
+            ),
+            const SizedBox(height: 20),
+           
+          ],
+        ),
+      ),
+    );
+  }
+  
 }
 
 
