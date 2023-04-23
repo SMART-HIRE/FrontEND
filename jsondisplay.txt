@@ -1,0 +1,112 @@
+// import 'package:flutter/material.dart';
+// import 'dart:convert';
+// import 'package:http/http.dart' as http;
+
+// import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+
+// class JsonTableScreen extends StatefulWidget {
+//   const JsonTableScreen({Key? key}) : super(key: key);
+
+//   @override
+//   State<JsonTableScreen> createState() => _JsonTableScreenState();
+// }
+
+// class _JsonTableScreenState extends State<JsonTableScreen> {
+//   List<dynamic> _items = [];
+
+//   // Fetch content from the json file
+//   Future<void> readJson() async {
+//     try {
+//       // Get a reference to the Firebase Storage location
+//       final firebase_storage.Reference ref =
+//           firebase_storage.FirebaseStorage.instance.ref('shortlisted_list/shire.json');
+
+//       // Get the download URL of the JSON file
+//       final String downloadUrl = await ref.getDownloadURL();
+
+//       // Fetch the JSON data from the download URL
+//       final http.Response response = await http.get(Uri.parse(downloadUrl));
+
+//       // Decode the JSON data and set the state of the _items list
+//       final dynamic data = jsonDecode(response.body);
+//       setState(() {
+//         _items = data;
+//       });
+//     } catch (error) {
+//       print('Error fetching JSON data from Firebase Storage: $error');
+//     }
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         centerTitle: true,
+//         title: const Text(
+//           'SMART HIRE',
+//         ),
+//       ),
+//       body: Padding(
+//         padding: const EdgeInsets.all(25),
+//         child: Column(
+//           children: [
+//             ElevatedButton(
+//               onPressed: readJson,
+//               child: const Text('Load Data'),
+//             ),
+
+//             // Display the data loaded from Firebase Storage
+//             _items.isNotEmpty
+//                 ? Expanded(
+//                     child: ListView.builder(
+//                       itemCount: _items.length,
+//                       itemBuilder: (context, index) {
+//                         return Card(
+//                           margin: const EdgeInsets.all(10),
+//                           color: Colors.amber.shade100,
+//                           child: ListTile(
+//                             leading: Text((index + 1).toString()),
+//                             title: Text(_items[index].toString()),
+//                           ),
+//                         );
+//                       },
+//                     ),
+//                   )
+//                 : const SizedBox.shrink(),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

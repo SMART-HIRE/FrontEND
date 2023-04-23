@@ -16,25 +16,25 @@ class _BottomNavState extends State<BottomNav> {
     content.add(Center(
       child: Text(
         "Home",
-        style: Theme.of(context).textTheme.headline4,
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
     ));
     content.add(Center(
       child: Text(
         "Search",
-        style: Theme.of(context).textTheme.headline4,
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
     ));
     content.add(Center(
       child: Text(
         "Bookmark",
-        style: Theme.of(context).textTheme.headline4,
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
     ));
     content.add(Center(
       child: Text(
         "Settings",
-        style: Theme.of(context).textTheme.headline4,
+        style: Theme.of(context).textTheme.headlineMedium,
       ),
     ));
   }

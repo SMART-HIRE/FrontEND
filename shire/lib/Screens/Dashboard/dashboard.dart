@@ -102,7 +102,7 @@ String _userEmail = '';
                   selectedTileColor: Colors.lightBlueAccent,
                   title: Text(
                     "Hello $_userEmail",
-                    style: Theme.of(context).textTheme.subtitle1!.merge(
+                    style: Theme.of(context).textTheme.titleMedium!.merge(
                           const TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 18.0,
@@ -111,7 +111,7 @@ String _userEmail = '';
                   ),
                   subtitle: Text(
                     "Welcome back",
-                    style: Theme.of(context).textTheme.subtitle2,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                   trailing: PopUpMen(
                     menuList: const [
@@ -480,7 +480,7 @@ Widget build(BuildContext context) {
                   children: [
                     Text(
                       "${gridMap.elementAt(index)['title']}",
-                      style: Theme.of(context).textTheme.subtitle1!.merge(
+                      style: Theme.of(context).textTheme.titleMedium!.merge(
                         const TextStyle(
                           fontWeight: FontWeight.w700,
                         ),
@@ -491,7 +491,7 @@ Widget build(BuildContext context) {
                     ),
                     Text(
                       "${gridMap.elementAt(index)['description']}",
-                      style: Theme.of(context).textTheme.subtitle2!.merge(
+                      style: Theme.of(context).textTheme.titleSmall!.merge(
                         TextStyle(
                           fontWeight: FontWeight.w700,
                           color: Colors.grey.shade500,

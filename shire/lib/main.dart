@@ -1,10 +1,7 @@
-// ignore_for_file: deprecated_member_use, unused_import, use_key_in_widget_constructors, unused_field, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shire/Screens/Auth/auth.dart';
 import 'package:shire/Screens/Dashboard/canddash.dart';
-import 'package:shire/Screens/Dashboard/dashboard.dart';
 import 'package:shire/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
@@ -45,8 +42,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Colors.white,
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
-              elevation: 0,
-              primary: kPrimaryColor,
+              elevation: 0, backgroundColor: kPrimaryColor,
               shape: const StadiumBorder(),
               maximumSize: const Size(double.infinity, 56),
               minimumSize: const Size(double.infinity, 56),

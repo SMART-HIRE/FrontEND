@@ -13,6 +13,7 @@ import 'package:shire/Screens/FilePicker/fp1.dart';
 import 'package:shire/Screens/FilePicker/fp2.dart';
 import 'package:shire/animation.dart';
 import 'package:shire/back.dart';
+import 'package:shire/jsondisplay1.dart';
 import 'package:shire/main.dart';
 
 class CandDash extends StatefulWidget {
@@ -94,7 +95,7 @@ class _DashBoardState extends State<CandDash> {
                   selectedTileColor: Colors.lightBlueAccent,
                   title: Text(
                     "Hello Candidate",
-                    style: Theme.of(context).textTheme.subtitle1!.merge(
+                    style: Theme.of(context).textTheme.titleMedium!.merge(
                           const TextStyle(
                             fontWeight: FontWeight.w700,
                             fontSize: 18.0,
@@ -103,7 +104,7 @@ class _DashBoardState extends State<CandDash> {
                   ),
                   subtitle: Text(
                     "Welcome",
-                    style: Theme.of(context).textTheme.subtitle2,
+                    style: Theme.of(context).textTheme.titleSmall,
                   ),
                   trailing: PopUpMen(
                     menuList: const [
@@ -145,8 +146,7 @@ class _DashBoardState extends State<CandDash> {
                     ],
                     icon: CircleAvatar(
                       backgroundImage: const NetworkImage(
-                        'https://images.unsplash.com/photo-1644982647869-e1337f992828?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80',
-                      ),
+                          '../../../assets/images/LOGO 1.png'),
                       child: Container(),
                     ),
                   ),
@@ -262,7 +262,7 @@ class _DashBoardState extends State<CandDash> {
                     context,
                     MaterialPageRoute(
                       builder: (context) {
-                        return FirebaseFileDownloader();
+                        return Json();
                       },
                     ),
                   );
@@ -294,7 +294,7 @@ class _DashBoardState extends State<CandDash> {
                   await FirebaseAuth.instance.signOut();
                   if (!mounted) return;
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return  ButtonSelection();
+                    return ButtonSelection();
                   }));
                 },
                 icon: const Icon(
@@ -408,224 +408,117 @@ class _GridBState extends State<GridB> {
     //       "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
     // }
   ];
-@override
-Widget build(BuildContext context) {
-  return GridView.builder(
-    physics: const NeverScrollableScrollPhysics(),
-    shrinkWrap: true,
-    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      crossAxisCount: 2,
-      crossAxisSpacing: 12.0,
-      mainAxisSpacing: 12.0,
-      mainAxisExtent: 310,
-    ),
-    itemCount: gridMap.length,
-    itemBuilder: (_, index) {
-      return GestureDetector(
-        onTap: () {
-          switch (index) {
-            case 0:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FP1(),
-                ),
-              );
-              break;
-            case 1:
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => FP2(),
-                ),
-              );
-              break;
-            // add more cases for each item in the gridMap list
-          }
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(
-              16.0,
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+      physics: const NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+        crossAxisSpacing: 12.0,
+        mainAxisSpacing: 12.0,
+        mainAxisExtent: 310,
+      ),
+      itemCount: gridMap.length,
+      itemBuilder: (_, index) {
+        return GestureDetector(
+          onTap: () {
+            switch (index) {
+              case 0:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FP1(),
+                  ),
+                );
+                break;
+              case 1:
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FP2(),
+                  ),
+                );
+                break;
+              // add more cases for each item in the gridMap list
+            }
+          },
+          child: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(
+                16.0,
+              ),
+              color: Colors.amberAccent.shade100,
             ),
-            color: Colors.amberAccent.shade100,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(16.0),
-                  topRight: Radius.circular(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(16.0),
+                    topRight: Radius.circular(16.0),
+                  ),
+                  child: Image.network(
+                    "${gridMap.elementAt(index)['images']}",
+                    height: 170,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                 ),
-                child: Image.network(
-                  "${gridMap.elementAt(index)['images']}",
-                  height: 170,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "${gridMap.elementAt(index)['title']}",
-                      style: Theme.of(context).textTheme.subtitle1!.merge(
-                        const TextStyle(
-                          fontWeight: FontWeight.w700,
-                        ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${gridMap.elementAt(index)['title']}",
+                        style: Theme.of(context).textTheme.titleMedium!.merge(
+                              const TextStyle(
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 8.0,
-                    ),
-                    Text(
-                      "${gridMap.elementAt(index)['description']}",
-                      style: Theme.of(context).textTheme.subtitle2!.merge(
-                        TextStyle(
-                          fontWeight: FontWeight.w700,
-                          color: Colors.grey.shade500,
-                        ),
+                      const SizedBox(
+                        height: 8.0,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 8.0,
-                    ),
-                    Row(
-                      children: [
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            CupertinoIcons.eye,
+                      Text(
+                        "${gridMap.elementAt(index)['description']}",
+                        style: Theme.of(context).textTheme.titleSmall!.merge(
+                              TextStyle(
+                                fontWeight: FontWeight.w700,
+                                color: Colors.grey.shade500,
+                              ),
+                            ),
+                      ),
+                      const SizedBox(
+                        height: 8.0,
+                      ),
+                      Row(
+                        children: [
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              CupertinoIcons.eye,
+                            ),
                           ),
-                        ),
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            CupertinoIcons.pen,
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              CupertinoIcons.pen,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-      );
-    },
-  );
-}
+        );
+      },
+    );
+  }
 
 
-
-
-
-
-
-
-
-
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return GridView.builder(
-//       physics: const NeverScrollableScrollPhysics(),
-//       shrinkWrap: true,
-//       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//         crossAxisCount: 2,
-//         crossAxisSpacing: 12.0,
-//         mainAxisSpacing: 12.0,
-//         mainAxisExtent: 310,
-//       ),
-//       itemCount: gridMap.length,
-//       itemBuilder: (_, index) {
-//         return Container(
-//           decoration: BoxDecoration(
-//             borderRadius: BorderRadius.circular(
-//               16.0,
-//             ),
-//             color: Colors.amberAccent.shade100,
-//           ),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               ClipRRect(
-//                 borderRadius: const BorderRadius.only(
-//                   topLeft: Radius.circular(16.0),
-//                   topRight: Radius.circular(16.0),
-//                 ),
-//                 child: Image.network(
-//                   "${gridMap.elementAt(index)['images']}",
-//                   height: 170,
-//                   width: double.infinity,
-//                   fit: BoxFit.cover,
-//                 ),
-//               ),
-//               Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       "${gridMap.elementAt(index)['title']}",
-//                       style: Theme.of(context).textTheme.subtitle1!.merge(
-//                             const TextStyle(
-//                               fontWeight: FontWeight.w700,
-//                             ),
-//                           ),
-//                     ),
-//                     const SizedBox(
-//                       height: 8.0,
-//                     ),
-//                     Text(
-//                       "${gridMap.elementAt(index)['description']}",
-//                       style: Theme.of(context).textTheme.subtitle2!.merge(
-//                             TextStyle(
-//                               fontWeight: FontWeight.w700,
-//                               color: Colors.grey.shade500,
-//                             ),
-//                           ),
-//                     ),
-//                     const SizedBox(
-//                       height: 8.0,
-//                     ),
-//                     Row(
-//                       children: [
-//                         IconButton(
-//                           onPressed: () {
-//                             Navigator.push(
-//                             context,
-//                             MaterialPageRoute(
-//                             builder: (context) {
-//                             return FP1();
-//                                },
-//                               ),
-//                             );
-//                           },
-//                           icon: Icon(
-//                             CupertinoIcons.upload_circle,
-//                           ),
-//                         ),
-//                         IconButton(
-//                           onPressed: () {
-//  },
-//                           icon: Icon(
-//                             CupertinoIcons.pen,
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-//         );
-//       },
-//     );
-  // }
 }
