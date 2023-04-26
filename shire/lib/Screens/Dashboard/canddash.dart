@@ -14,6 +14,7 @@ import 'package:shire/Screens/FilePicker/fp2.dart';
 import 'package:shire/animation.dart';
 import 'package:shire/back.dart';
 import 'package:shire/jsondisplay1.dart';
+import 'package:shire/jsondisplay2.dart';
 import 'package:shire/main.dart';
 
 class CandDash extends StatefulWidget {
@@ -257,16 +258,7 @@ class _DashBoardState extends State<CandDash> {
                 ),
               ),
               IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return Json();
-                      },
-                    ),
-                  );
-                },
+                onPressed: () {},
                 icon: const Icon(
                   CupertinoIcons.search,
                 ),
@@ -383,30 +375,7 @@ class _GridBState extends State<GridB> {
       "images":
           "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
     }
-    // {
-    //   "title": "USER 3",
-    //   "description": "EEE",
-    //   "images":
-    //       "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
-    // },
-    // {
-    //   "title": "USER 4",
-    //   "description": "ECE",
-    //   "images":
-    //       "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
-    // },
-    // {
-    //   "title": "USER 5",
-    //   "description": "ECE",
-    //   "images":
-    //       "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
-    // },
-    // {
-    //   "title": "USER 6",
-    //   "description": "CSE",
-    //   "images":
-    //       "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
-    // }
+
   ];
   @override
   Widget build(BuildContext context) {
@@ -496,7 +465,33 @@ class _GridBState extends State<GridB> {
                       Row(
                         children: [
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                             switch (index) {
+                      case 0:
+                      Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Json2();
+                      },
+                    ),
+                  );
+                        break;
+                      case 1:
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return Json1();
+                      },
+                    ),
+                  );
+
+
+                      break;
+                      // add more cases for each item in the gridMap list
+                    }
+                            },
                             icon: Icon(
                               CupertinoIcons.eye,
                             ),
@@ -519,6 +514,4 @@ class _GridBState extends State<GridB> {
       },
     );
   }
-
-
 }

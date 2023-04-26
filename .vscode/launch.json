@@ -7,12 +7,12 @@
 
         
     
-        // {
-        //     "name": "shire",
-        //     "cwd": "shire",
-        //     "request": "launch",
-        //     "type": "dart"
-        // },
+        {
+            "name": "shire",
+            "cwd": "shire",
+            "request": "launch",
+            "type": "dart"
+        },
         {
             "name": "shire (profile mode)",
             "cwd": "shire",

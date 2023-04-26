@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher_string.dart';
 
-class Json1 extends StatefulWidget {
+class Json2 extends StatefulWidget {
   @override
   _JsonState createState() => _JsonState();
 }
 
-class _JsonState extends State<Json1> {
+class _JsonState extends State<Json2> {
   late List<dynamic> _items;
 
   @override
@@ -19,7 +19,7 @@ class _JsonState extends State<Json1> {
   }
 
   Future<void> _loadData() async {
-    final ref = firebase_storage.FirebaseStorage.instance.ref().child('shire1.json');
+    final ref = firebase_storage.FirebaseStorage.instance.ref().child('shire2.json');
     final url = await ref.getDownloadURL();
     final response = await http.get(Uri.parse(url));
     final jsonList = json.decode(response.body) as List<dynamic>;
@@ -32,7 +32,7 @@ class _JsonState extends State<Json1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("JR Shortlisted Candidates"),
+        title: Text("SR Shortlisted Candidates"),
       ),
       // ignore: unnecessary_null_comparison
       body: _items == null
