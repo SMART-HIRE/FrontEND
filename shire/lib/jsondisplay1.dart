@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'dart:convert';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:flutter/material.dart';
@@ -19,7 +21,8 @@ class _JsonState extends State<Json1> {
   }
 
   Future<void> _loadData() async {
-    final ref = firebase_storage.FirebaseStorage.instance.ref().child('shire1.json');
+    final ref =
+        firebase_storage.FirebaseStorage.instance.ref().child('shire1.json');
     final url = await ref.getDownloadURL();
     final response = await http.get(Uri.parse(url));
     final jsonList = json.decode(response.body) as List<dynamic>;
@@ -34,7 +37,6 @@ class _JsonState extends State<Json1> {
       appBar: AppBar(
         title: Text("JR Shortlisted Candidates"),
       ),
-      // ignore: unnecessary_null_comparison
       body: _items == null
           ? Center(
               child: CircularProgressIndicator(),
@@ -57,17 +59,17 @@ class _JsonState extends State<Json1> {
                     child: Container(
                       padding: EdgeInsets.all(8),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Container(
-                            width: 50,
-                            height: 50,
-                            child: Image.network(
-                              item[4].toString(),
-                              fit: BoxFit.fill,
-                            ),
-                          ),
+                          // Container(
+                          //   width: 50,
+                          //   height: 50,
+                          //   child: Image.network(
+                          //     item[4].toString(),
+                          //     fit: BoxFit.fill,
+                          //   ),
+                          // ),
                           Expanded(
                             child: Container(
                               padding: EdgeInsets.only(bottom: 8),
@@ -87,10 +89,22 @@ class _JsonState extends State<Json1> {
                                   ),
                                   Padding(
                                     padding: EdgeInsets.only(left: 8, right: 8),
-                                    child: Text(
-                                      item[8].toString(),
+                                    child: Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                            item[8].toString(),
+                                            textAlign: TextAlign.right,
+                                            style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
@@ -110,7 +124,6 @@ class DetailsPage extends StatelessWidget {
   final List<dynamic> item;
 
   const DetailsPage({required this.item});
-  
 
   @override
   Widget build(BuildContext context) {
@@ -196,34 +209,3 @@ class DetailsPage extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

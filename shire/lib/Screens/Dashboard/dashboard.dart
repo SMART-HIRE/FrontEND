@@ -267,7 +267,9 @@ class _DashBoardState extends State<DashBoard> {
                 ),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  
+                },
                 icon: const Icon(
                   CupertinoIcons.search,
                 ),
@@ -354,7 +356,7 @@ class FabExt extends StatelessWidget {
             SizedBox(width: showFabTitle ? 12.0 : 0),
             AnimatedContainer(
               duration: const Duration(seconds: 2),
-              child: showFabTitle ? const Text("Go to cart") : const SizedBox(),
+              child: showFabTitle ? const Text("Home") : const SizedBox(),
             )
           ],
         ),
@@ -362,7 +364,6 @@ class FabExt extends StatelessWidget {
     );
   }
 }
-
 class GridB extends StatefulWidget {
   const GridB({Key? key}) : super(key: key);
 
@@ -376,39 +377,26 @@ class _GridBState extends State<GridB> {
       "title": "Senior Engineer",
       "description": "2-5 years experience",
       "images":
-          "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
+          ""
     },
     {
       "title": "Junior Engineer",
       "description": "0-1 years experience",
       "images":
-          "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
+          ""
     }
-    // {
-    //   "title": "USER 3",
-    //   "description": "EEE",
-    //   "images":
-    //       "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
-    // },
-    // {
-    //   "title": "USER 4",
-    //   "description": "ECE",
-    //   "images":
-    //       "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
-    // },
-    // {
-    //   "title": "USER 5",
-    //   "description": "ECE",
-    //   "images":
-    //       "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
-    // },
-    // {
-    //   "title": "USER 6",
-    //   "description": "CSE",
-    //   "images":
-    //       "https://thumbs.dreamstime.com/b/frontal-male-passport-photo-isolated-white-background-eu-standardization-frontal-male-passport-photo-isolated-white-149548031.jpg"
-    // }
   ];
+
+  void addNewTile(String title, String description, String imageUrl) {
+    setState(() {
+      gridMap.add({
+        'title': title,
+        'description': description,
+        'images': imageUrl,
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -473,7 +461,7 @@ class _GridBState extends State<GridB> {
                     children: [
                       Text(
                         "${gridMap.elementAt(index)['title']}",
-                        style: Theme.of(context).textTheme.titleMedium!.merge(
+                        style: Theme.of(context).textTheme.titleLarge!.merge(
                               const TextStyle(
                                 fontWeight: FontWeight.w700,
                               ),
@@ -484,7 +472,7 @@ class _GridBState extends State<GridB> {
                       ),
                       Text(
                         "${gridMap.elementAt(index)['description']}",
-                        style: Theme.of(context).textTheme.titleSmall!.merge(
+                        style: Theme.of(context).textTheme.titleMedium!.merge(
                               TextStyle(
                                 fontWeight: FontWeight.w700,
                                 color: Colors.grey.shade500,
@@ -518,7 +506,6 @@ class _GridBState extends State<GridB> {
                                       },
                                     ),
                                   );
-
                                   break;
                                 // add more cases for each item in the gridMap list
                               }
@@ -528,7 +515,20 @@ class _GridBState extends State<GridB> {
                             ),
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) {
+                                    return EnterDetailsPage(
+                                      onDetailsEntered: (title, description, imageUrl) {
+                                        addNewTile(title, description, imageUrl);
+                                      },
+                                    );
+                                  },
+                                ),
+                              );
+                            },
                             icon: Icon(
                               CupertinoIcons.pen,
                             ),
@@ -545,103 +545,64 @@ class _GridBState extends State<GridB> {
       },
     );
   }
+}
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return GridView.builder(
-//       physics: const NeverScrollableScrollPhysics(),
-//       shrinkWrap: true,
-//       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//         crossAxisCount: 2,
-//         crossAxisSpacing: 12.0,
-//         mainAxisSpacing: 12.0,
-//         mainAxisExtent: 310,
-//       ),
-//       itemCount: gridMap.length,
-//       itemBuilder: (_, index) {
-//         return Container(
-//           decoration: BoxDecoration(
-//             borderRadius: BorderRadius.circular(
-//               16.0,
-//             ),
-//             color: Colors.amberAccent.shade100,
-//           ),
-//           child: Column(
-//             crossAxisAlignment: CrossAxisAlignment.start,
-//             children: [
-//               ClipRRect(
-//                 borderRadius: const BorderRadius.only(
-//                   topLeft: Radius.circular(16.0),
-//                   topRight: Radius.circular(16.0),
-//                 ),
-//                 child: Image.network(
-//                   "${gridMap.elementAt(index)['images']}",
-//                   height: 170,
-//                   width: double.infinity,
-//                   fit: BoxFit.cover,
-//                 ),
-//               ),
-//               Padding(
-//                 padding: const EdgeInsets.all(8.0),
-//                 child: Column(
-//                   crossAxisAlignment: CrossAxisAlignment.start,
-//                   children: [
-//                     Text(
-//                       "${gridMap.elementAt(index)['title']}",
-//                       style: Theme.of(context).textTheme.subtitle1!.merge(
-//                             const TextStyle(
-//                               fontWeight: FontWeight.w700,
-//                             ),
-//                           ),
-//                     ),
-//                     const SizedBox(
-//                       height: 8.0,
-//                     ),
-//                     Text(
-//                       "${gridMap.elementAt(index)['description']}",
-//                       style: Theme.of(context).textTheme.subtitle2!.merge(
-//                             TextStyle(
-//                               fontWeight: FontWeight.w700,
-//                               color: Colors.grey.shade500,
-//                             ),
-//                           ),
-//                     ),
-//                     const SizedBox(
-//                       height: 8.0,
-//                     ),
-//                     Row(
-//                       children: [
-//                         IconButton(
-//                           onPressed: () {
-//                             Navigator.push(
-//                             context,
-//                             MaterialPageRoute(
-//                             builder: (context) {
-//                             return FP1();
-//                                },
-//                               ),
-//                             );
-//                           },
-//                           icon: Icon(
-//                             CupertinoIcons.upload_circle,
-//                           ),
-//                         ),
-//                         IconButton(
-//                           onPressed: () {
-//  },
-//                           icon: Icon(
-//                             CupertinoIcons.pen,
-//                           ),
-//                         ),
-//                       ],
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ],
-//           ),
-//         );
-//       },
-//     );
-  // }
+class EnterDetailsPage extends StatelessWidget {
+  final Function(String, String, String) onDetailsEntered;
+
+  const EnterDetailsPage({
+    Key? key,
+    required this.onDetailsEntered,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    String title = '';
+    String description = '';
+    String imageUrl = '';
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Enter Details'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            TextField(
+              onChanged: (value) {
+                title = value;
+              },
+              decoration: InputDecoration(
+                labelText: 'Title',
+              ),
+            ),
+            TextField(
+              onChanged: (value) {
+                description = value;
+              },
+              decoration: InputDecoration(
+                labelText: 'Description',
+              ),
+            ),
+            TextField(
+              onChanged: (value) {
+                imageUrl = value;
+              },
+              decoration: InputDecoration(
+                labelText: 'Image URL',
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                onDetailsEntered(title, description, imageUrl);
+                Navigator.pop(context); // Close the EnterDetailsPage
+              },
+              child: Text('Submit'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
